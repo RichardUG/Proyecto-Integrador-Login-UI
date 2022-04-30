@@ -24,7 +24,7 @@ class OrederViewModel : ViewModel(){
   // private val retrofitUsers: Retrofit? = RetrofitGenerator().getInstanceUsers(storage)
 
     init {
-        _retrofitTasks.value = retrofitTasks?.create()
+        _retrofitTasks.value = _retrofitTasks.value?.javaClass?.let { retrofitTasks?.create(it) }
        // _retrofitUsers.value = retrofitUsers?.create(_retrofitUsers.value?.javaClass)
     }
 }

@@ -17,13 +17,14 @@ import rx.schedulers.Schedulers
 import kotlin.coroutines.coroutineContext
 
 class RetrofitGenerator {
-    private var retrofitInstance: Retrofit? = null
+    private var retrofitInstanceTask: Retrofit? = null
+    private var retrofitInstanceUser: Retrofit? = null
 
     fun getInstanceUsers(storage: Storage): Retrofit? {
-        if (retrofitInstance == null) {
-            retrofitInstance = createRetrofitInstanceUsers(storage)
+        if (retrofitInstanceUser == null) {
+            retrofitInstanceUser = createRetrofitInstanceUsers(storage)
         }
-        return retrofitInstance
+        return retrofitInstanceUser
     }
 
     private fun createRetrofitInstanceUsers(storage: Storage): Retrofit? {
@@ -49,10 +50,10 @@ class RetrofitGenerator {
     }
 
     fun getInstanceTasks(): Retrofit? {
-        if (retrofitInstance == null) {
-            retrofitInstance = createRetrofitInstanceTasks()
+        if (retrofitInstanceTask == null) {
+            retrofitInstanceTask = createRetrofitInstanceTasks()
         }
-        return retrofitInstance
+        return retrofitInstanceTask
     }
 
     private fun createRetrofitInstanceTasks(): Retrofit? {
