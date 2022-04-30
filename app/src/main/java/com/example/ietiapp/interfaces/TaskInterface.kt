@@ -9,8 +9,8 @@ import retrofit2.http.*
 
 
 interface TaskInterface {
-    @GET
-    fun getAll(): Call<List<TasksDto?>?>?
+    @GET()
+    fun getAll(): List<TasksDto?>?
 
     @GET("/{id}")
     fun findById(@Path("id") id:String?):TasksDto
@@ -23,4 +23,5 @@ interface TaskInterface {
 
     @DELETE("/id")
     fun delete(@Path("id") id: String):Response<ResponseBody>
+
 }

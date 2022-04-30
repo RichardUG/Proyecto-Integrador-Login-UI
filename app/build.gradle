@@ -18,9 +18,11 @@ android {
 
     buildTypes {
 
+        debug{
+            buildConfigField "String", "APITASKS", "\"https://taskplannertasks.herokuapp.com/v1/tasks/\""
+            buildConfigField "String", "APIUSERS", "\"https://taskplannerusers.herokuapp.com/v1/\""
+        }
         release {
-            buildConfigField 'String', 'apitasks', 'https://taskplannertasks.herokuapp.com/v1/tasks'
-            buildConfigField 'String', 'apiusers', 'https://taskplannerusers.herokuapp.com/v1/user'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
