@@ -9,10 +9,10 @@ import retrofit2.http.*
 
 
 interface TaskInterface {
-    @GET()
-    fun getAll(): List<TasksDto?>?
+    @GET("tasks")
+    fun getAll(): Call<List<TasksDto?>>?
 
-    @GET("/{id}")
+    @GET("tasks/{id}")
     fun findById(@Path("id") id:String?):TasksDto
 
     @POST

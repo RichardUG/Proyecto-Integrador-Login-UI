@@ -7,7 +7,7 @@ import okhttp3.Response
 import java.io.IOException
 
 class AuthInterceptor(storage: Storage) : Interceptor {
-    private val storage: Storage
+    private val storage: Storage = storage
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -19,7 +19,4 @@ class AuthInterceptor(storage: Storage) : Interceptor {
         return chain.proceed(request.build())
     }
 
-    init {
-        this.storage = storage
-    }
 }

@@ -7,8 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.ietiapp.databinding.FragmentSecondBinding
+import com.example.ietiapp.generators.RetrofitGenerator
+import com.example.ietiapp.interfaces.TaskInterface
 import com.example.ietiapp.model.OrederViewModel
 
 /**
@@ -22,12 +23,13 @@ class SecondFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+    var tasks_connect: TaskInterface = RetrofitGenerator().getInstanceTasks().create(TaskInterface::class.java)
     override fun onCreateView(
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        Log.e("tareas", sharedViewModel.tasks_connect.getAll().toString())
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -37,7 +39,7 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonGetTareas.setOnClickListener {
-            Log.e("tareas", sharedViewModel.Tasks.value?.getAll().toString())
+            Log.e("tareas", tasks_connect.getAll().toString())
         }
     }
 

@@ -49,14 +49,14 @@ class RetrofitGenerator {
         return builder.client(okHttpClient).build()
     }
 
-    fun getInstanceTasks(): Retrofit? {
+    fun getInstanceTasks(): Retrofit {
         if (retrofitInstanceTask == null) {
             retrofitInstanceTask = createRetrofitInstanceTasks()
         }
-        return retrofitInstanceTask
+        return retrofitInstanceTask as Retrofit
     }
 
-    private fun createRetrofitInstanceTasks(): Retrofit? {
+    private fun createRetrofitInstanceTasks(): Retrofit {
         val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
         val builder =
             Retrofit.Builder()

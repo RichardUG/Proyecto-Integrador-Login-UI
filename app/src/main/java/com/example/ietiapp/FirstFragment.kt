@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ietiapp.databinding.FragmentFirstBinding
+import com.example.ietiapp.model.OrederViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,7 +16,7 @@ import com.example.ietiapp.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
+    private val sharedViewModel: OrederViewModel by activityViewModels()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
