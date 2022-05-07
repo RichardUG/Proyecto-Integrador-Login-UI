@@ -8,7 +8,7 @@ import retrofit2.Response
 import retrofit2.http.*
 
 
-interface TaskInterface {
+interface TaskInterface : AuthInterface {
     @GET("tasks")
     fun getAll(): Call<List<TasksDto?>>?
 
