@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.NavHostFragment
 import com.example.ietiapp.data.LoginDto
 import com.example.ietiapp.data.TokenDto
 import com.example.ietiapp.databinding.FragmentSecondBinding
@@ -20,14 +19,18 @@ import com.example.ietiapp.interfaces.TaskInterface
 import com.example.ietiapp.model.OrederViewModel
 import com.example.ietiapp.storage.ImplementedStorage
 import com.example.ietiapp.storage.Storage
+import com.google.android.gms.analytics.AnalyticsService
+import dagger.hilt.android.AndroidEntryPoint
 import rx.functions.Action1
 import rx.schedulers.Schedulers
 import java.util.*
+import javax.inject.Inject
 
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null

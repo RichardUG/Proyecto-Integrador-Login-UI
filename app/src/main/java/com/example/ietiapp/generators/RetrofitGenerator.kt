@@ -6,7 +6,9 @@ import com.example.ietiapp.BuildConfig
 import com.example.ietiapp.R
 import com.example.ietiapp.interceptor.AuthInterceptor
 import com.example.ietiapp.storage.Storage
+import com.google.android.gms.analytics.AnalyticsService
 import com.google.gson.GsonBuilder
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,11 +16,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import rx.schedulers.Schedulers
+import javax.inject.Inject
 import kotlin.coroutines.coroutineContext
-
+@AndroidEntryPoint
 class RetrofitGenerator {
     private var retrofitInstanceTask: Retrofit? = null
     private var retrofitInstanceUser: Retrofit? = null
+    @Inject
+    var analyticsService: AnalyticsService? = null
 
     fun getInstanceUsers(storage: Storage): Retrofit? {
         if (retrofitInstanceUser == null) {
