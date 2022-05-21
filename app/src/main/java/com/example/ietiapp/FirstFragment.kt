@@ -1,10 +1,14 @@
 package com.example.ietiapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.ietiapp.databinding.FragmentFirstBinding
@@ -27,6 +31,34 @@ class FirstFragment : Fragment() {
     ): View? {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+
+        var spinner: Spinner =binding.spinner
+        var list:List<String> = listOf("aaa","bbb","ccc","ddd")
+
+        var adapter: ArrayAdapter<String> =
+            ArrayAdapter<String>(requireContext(),
+                R.layout.item,
+                    list)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                adapterView: AdapterView<*>?,
+                view: View,
+                itemSeleccionado: Int,
+                l: Long
+            ) {
+                Log.e("indicador", binding!!.spinner.selectedItem.toString())
+            }
+
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+        }
+
+        sharedViewModel.buildDatabase(requireActivity().applicationContext)
+
+        binding!!.etDate.setOnClickListener { showDatePickerDialog() }
+
         return binding.root
 
     }
@@ -42,5 +74,14 @@ class FirstFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
+        datePicker.show(childFragmentManager, "datePicker")
+    }
+
+    private fun onDateSelected(day: Int, month: Int, year: Int) {
+        binding!!.etDate.setText("$year-$month-$day")
     }
 }

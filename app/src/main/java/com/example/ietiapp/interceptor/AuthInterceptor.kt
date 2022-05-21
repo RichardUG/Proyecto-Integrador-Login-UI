@@ -13,9 +13,6 @@ class AuthInterceptor(storage: Storage) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request: Request.Builder = chain.request().newBuilder()
         val token: String = storage.getToken()
-        if (!token.isEmpty()) {
-            request.addHeader("Authorization", "Bearer $token")
-        }
         return chain.proceed(request.build())
     }
 

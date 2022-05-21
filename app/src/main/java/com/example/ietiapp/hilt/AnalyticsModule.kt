@@ -11,7 +11,8 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
     class AnalyticsModule {
     @Provides
-    fun provideAnalyticsService():AnalyticsService {
-        return GoogleAnalyticsService()
+    fun provideAnalyticsService(): AnalyticsService? {
+        //return GoogleAnalyticsService()
+        return  null
     }
 }

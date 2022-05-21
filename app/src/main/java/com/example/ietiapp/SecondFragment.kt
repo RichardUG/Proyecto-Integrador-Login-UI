@@ -11,20 +11,19 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.ietiapp.data.LoginDto
+import com.example.ietiapp.data.RoleEnum
 import com.example.ietiapp.data.TokenDto
 import com.example.ietiapp.databinding.FragmentSecondBinding
 import com.example.ietiapp.generators.RetrofitGenerator
 import com.example.ietiapp.interfaces.AuthInterface
 import com.example.ietiapp.interfaces.TaskInterface
 import com.example.ietiapp.model.OrederViewModel
+import com.example.ietiapp.roomEntity.UserEntity
 import com.example.ietiapp.storage.ImplementedStorage
 import com.example.ietiapp.storage.Storage
-import com.google.android.gms.analytics.AnalyticsService
-import dagger.hilt.android.AndroidEntryPoint
 import rx.functions.Action1
 import rx.schedulers.Schedulers
-import java.util.*
-import javax.inject.Inject
+import java.time.LocalDate
 
 
 /**
@@ -40,14 +39,14 @@ class SecondFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    var tasks_connect: TaskInterface = RetrofitGenerator().getInstanceTasks().create(TaskInterface::class.java)
+//    var tasks_connect: TaskInterface = RetrofitGenerator().getInstanceTasks().create(TaskInterface::class.java)
 
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.e("tareas", sharedViewModel.tasks_connect.getAll().toString())
+
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -57,8 +56,22 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonGetTareas.setOnClickListener {
-            sendatuh()
-            Log.e("tareas", tasks_connect.getAll().toString())
+            //sendatuh()
+            var userEntity = UserEntity("3","Richard","richard@richard","urrea",
+                LocalDate.now(),"clave",RoleEnum.USER)
+            sharedViewModel.userDao.create(userEntity)
+            var users:List<UserEntity> = sharedViewModel.userDao.getAll()
+            for (user in users){
+                Log.e("indicador", user.id)
+                Log.e("indicador", user.email.toString())
+                Log.e("indicador", user.name.toString())
+                Log.e("indicador", user.lastName.toString())
+                Log.e("indicador", user.passwordHash.toString())
+                Log.e("indicador", user.createdAt.toString())
+                Log.e("indicador", user.roles.toString())
+                Log.e("indicador", "-------------------------")
+
+            }
         }
     }
 

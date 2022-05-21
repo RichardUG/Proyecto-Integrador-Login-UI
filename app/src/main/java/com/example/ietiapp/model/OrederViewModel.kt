@@ -1,30 +1,28 @@
 package com.example.ietiapp.model
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.ietiapp.generators.RetrofitGenerator
-import com.example.ietiapp.interfaces.AuthInterface
-import com.example.ietiapp.interfaces.TaskInterface
-import retrofit2.Retrofit
-import retrofit2.create
+import androidx.room.Room
+import com.example.ietiapp.dataBase.AppDatabase
+import com.example.ietiapp.roomDao.TasksDao
+import com.example.ietiapp.roomDao.UserDao
 
 class OrederViewModel : ViewModel(){
-    //private val _retrofitTasks = MutableLiveData<TaskInterface>()
-    //val Tasks : LiveData<TaskInterface> = _retrofitTasks
+    //var tasks_connect: TaskInterface = RetrofitGenerator().getInstanceTasks()!!.create(TaskInterface::class.java)
 
-    //private val _retrofitUsers = MutableLiveData<AuthInterface>()
-    //val Auth : LiveData<AuthInterface> = _retrofitUsers
+    private var db: AppDatabase? =null
 
-//    val storage:ImplementedStorage = TODO()
+    lateinit var userDao: UserDao
+    lateinit var tasksDao: TasksDao
 
-    //val retrofitTasks: Retrofit = RetrofitGenerator().getInstanceTasks()
-  // private val retrofitUsers: Retrofit? = RetrofitGenerator().getInstanceUsers(storage)
-    var tasks_connect: TaskInterface = RetrofitGenerator().getInstanceTasks()!!.create(TaskInterface::class.java)
+    fun buildDatabase(context: Context){
+        db = Room.databaseBuilder(
+            context,
+            AppDatabase::class.java, "database-name"
+        ).allowMainThreadQueries().build()
 
-    init {
-        // _retrofitTasks.value = _retrofitTasks.value?.javaClass?.let { retrofitTasks?.create(it) }
-       // _retrofitUsers.value = retrofitUsers?.create(_retrofitUsers.value?.javaClass)
-
+        userDao = db!!.userDao()
+        tasksDao = db!!.tasksDao()
     }
+
 }

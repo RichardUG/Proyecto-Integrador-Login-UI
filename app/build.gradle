@@ -2,14 +2,23 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdk 32
 
+    signingConfigs {
+        config {
+            enableV3Signing true
+            enableV4Signing true
+        }
+    }
+
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.example.ietiapp"
-        minSdk 20
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -31,6 +40,7 @@ android {
     compileOptions {
         sourceCompatibility sourceCompatibility
         targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -38,6 +48,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
@@ -62,4 +73,27 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     implementation "com.google.dagger:hilt-android:$hilt_version"
     annotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    def room_version = "2.4.2"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // optional - RxJava2 support for Room
+    implementation "androidx.room:room-rxjava2:$room_version"
+
+    // optional - RxJava3 support for Room
+    implementation "androidx.room:room-rxjava3:$room_version"
+
+    // optional - Guava support for Room, including Optional and ListenableFuture
+    implementation "androidx.room:room-guava:$room_version"
+
+    // optional - Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
+
+    // optional - Paging 3 Integration
+    implementation "androidx.room:room-paging:2.5.0-alpha01"
+
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
