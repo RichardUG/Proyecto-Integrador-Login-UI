@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".NuevoUsuario">
+
+    <data>
+        <variable
+            name="nuevoUsuarioFragment"
+            type="com.example.ietiapp.NuevoUsuario" />
+    </data>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id ="@+id/nuevoUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/imageView_crear"
+                android:layout_width="196dp"
+                android:layout_height="159dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/login_appname_crear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:layout_marginTop="25dp"
+                android:textSize="40dp"
+                android:textColor="@color/design_default_color_primary"
+                app:layout_constraintTop_toBottomOf="@id/imageView_crear"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/esnombres"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Nombres: "
+                app:layout_constraintBottom_toBottomOf="@id/nombres"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/nombres"
+                app:layout_constraintVertical_bias="0.567" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nombres"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint="Nombres"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/login_appname_crear"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nombres_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/esapellidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Apellidos: "
+                app:layout_constraintBottom_toBottomOf="@id/apellidos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/apellidos"
+                app:layout_constraintVertical_bias="0.567" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/apellidos"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint="Apellidos"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nombres"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/apellidos_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/escorreo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Correo: "
+                app:layout_constraintBottom_toBottomOf="@id/correo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/correo"
+                app:layout_constraintVertical_bias="0.567" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/correo"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint="Correo"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/apellidos"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/correo_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textWebEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/escontraseña"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Contraseña: "
+                app:layout_constraintBottom_toBottomOf="@id/contraseña"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/contraseña"
+                app:layout_constraintVertical_bias="0.567" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/contraseña"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint="Contraseña"
+                android:layout_marginEnd="20dp"
+                android:importantForAutofill="no"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/correo"
+                android:layout_marginTop="25dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/contraseña_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/crearUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:onClick="@{()->nuevoUsuarioFragment.crear()}"
+                android:text="Crear"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contraseña" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

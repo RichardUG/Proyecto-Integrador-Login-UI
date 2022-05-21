@@ -6,23 +6,22 @@ import java.util.EnumSet.of
 import java.util.List.of
 
 class TokenDto {
-    var token:String =""
+    var token: String=""
         get():String = field
         set(value) {
             field=value
         }
-    var expirationDate:Date=Date(2000, 1, 1)
-        get():Date=field
+    var expirationDate: Long = 0
+        get():Long=field
         set(value) {
             field=value
         }
+    constructor(){}
 
-    constructor(token:String,expirationDate:Date){
-        this.token=token
-        this.expirationDate=expirationDate
-
+    constructor(token: String, expirationDate: Long) {
+        this.token = token
+        this.expirationDate = expirationDate
     }
-    constructor()
 
     override fun toString(): String {
         return "TokenDto(token='$token', expirationDate=$expirationDate)"

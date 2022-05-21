@@ -10,18 +10,18 @@ import retrofit2.http.*
 
 interface TaskInterface : AuthInterface {
     @GET("tasks")
-    fun getAll(): Call<List<TasksDto?>>?
+    fun getAll(): rx.Observable<List<TasksDto>>
 
     @GET("tasks/{id}")
-    fun findById(@Path("id") id:String?):TasksDto
+    fun findById(@Path("id") id:String?): rx.Observable<TasksDto>
 
     @POST
-    fun create(@Body requestBody: RequestBody):Response<ResponseBody>
+    fun create(@Body requestBody: RequestBody): rx.Observable<Object>
 
     @PUT("/{id}")
-    fun update(@Body requestBody: RequestBody, @Path("id") id:String):Response<ResponseBody>
+    fun update(@Body requestBody: RequestBody, @Path("id") id:String): rx.Observable<Object>
 
     @DELETE("/id")
-    fun delete(@Path("id") id: String):Response<ResponseBody>
+    fun delete(@Path("id") id: String): rx.Observable<Object>
 
 }

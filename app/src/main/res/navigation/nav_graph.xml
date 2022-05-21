@@ -3,26 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/Login">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.ietiapp.FirstFragment"
+        android:id="@+id/Login"
+        android:name="com.example.ietiapp.Login"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_login">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_Login_to_nuevoUsuario"
+            app:destination="@id/nuevoUsuario" />
+        <action
+            android:id="@+id/action_Login_to_Tasks"
+            app:destination="@id/Tasks" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.ietiapp.SecondFragment"
+        android:id="@+id/Tasks"
+        android:name="com.example.ietiapp.Tasks"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        tools:layout="@layout/fragment_tasks"/>
+    <fragment
+        android:id="@+id/nuevoUsuario"
+        android:name="com.example.ietiapp.NuevoUsuario"
+        android:label="fragment_nuevo_usuario"
+        tools:layout="@layout/fragment_nuevo_usuario" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_nuevoUsuario_to_Login"
+            app:destination="@id/Login"
+            app:popUpTo="@id/Login"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
